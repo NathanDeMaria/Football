@@ -21,7 +21,11 @@ class StandardPlay(Play):
             self._field_position = _convert_field_position(tokens[4], tokens[5], offense)
 
         self._down = int(down[0])
-        self._distance = int(dist)
+
+        if dist == 'Goal':
+            self._distance = self._field_position
+        else:
+            self._distance = int(dist)
 
     @property
     def down(self):

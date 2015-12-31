@@ -9,7 +9,7 @@ class Play:
         Parses out the start time of the play
         :param text: something starting with \t\t\t...(15:00 - 1st)
         """
-        time, quarter = re.findall('\([0-9]{1,2}:[0-9]{2} - [1-4strdhOT]{2,3}\)', text)[0][1:-1].split('-')
+        time, quarter = re.findall('\([0-9]{1,2}:[0-9]{2} - [1-4stndrhOT]{2,3}\)', text)[0][1:-1].split('-')
         minutes, seconds = time.split(':')
         self._seconds = 60 * int(minutes) + int(seconds)
 

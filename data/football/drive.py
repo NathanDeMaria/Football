@@ -25,13 +25,18 @@ class Drive:
         :return: yields the plays in the drive
         """
         for play in html.find_all('li'):
-            header = play.find('h3').text
-            text = play.find('p').text
+            header = play.find('h3').text.strip()
+            text = play.find('p').text.strip()
+
+            if _should_skip(header):
+                continue
+
             try:
                 yield parse_play(header, text, self._offense)
             except Exception as e:
                 logger.info("Error parsing: {header} {text} because {error}"
-                            .format(header=header.strip(), text=text.strip(), error=e.message))
+                            .format(header=header, text=text, error=e.message))
+                yield None
 
     @staticmethod
     def _parse_sides(html):
@@ -54,3 +59,12 @@ class Drive:
             defense = home_team
 
         return offense, defense
+
+
+def _should_skip(header):
+    """
+    Identify some "plays" as non-plays
+    :param header: header for the play
+    :return: True if I don't want to parse this play
+    """
+    return str.startswith('END', header)
