@@ -1,11 +1,14 @@
 import argparse
-from pages import Week
+from pages import Week, BoxScore
 
 
 def main(year):
     for week in range(1, 18):
         w = Week(year, week)
-        print list(w.get_game_ids())
+        for game_id in w.get_game_ids():
+            b = BoxScore(game_id)
+            drives = b.get_drives()
+            print len(list(drives))
 
 
 if __name__ == '__main__':
