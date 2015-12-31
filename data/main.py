@@ -1,5 +1,6 @@
 import argparse
 from pages import Week, BoxScore
+from football.plays import StandardPlay
 
 
 def main(year):
@@ -8,7 +9,12 @@ def main(year):
         for game_id in w.get_game_ids():
             b = BoxScore(game_id)
             drives = b.get_drives()
-            print len(list(drives))
+            for drive in drives:
+                for play in drive.plays:
+                    if isinstance(play, StandardPlay):
+                        print play.down, play.distance, play.field_position
+            # because I just want to test one :)
+            break
 
 
 if __name__ == '__main__':
