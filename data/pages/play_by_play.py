@@ -3,7 +3,7 @@ from scraper import get_page
 from football import Drive
 
 
-class BoxScore:
+class PlayByPlay:
     _url_format = 'http://espn.go.com/nfl/playbyplay?gameId={game_id}'
 
     def __init__(self, game_id):

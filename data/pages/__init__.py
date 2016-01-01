@@ -1,2 +1,2 @@
 from .week import Week
-from .box_score import BoxScore
+from .play_by_play import PlayByPlay

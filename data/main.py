@@ -1,6 +1,6 @@
 import argparse
 import pandas as pd
-from pages import Week, BoxScore
+from pages import Week, PlayByPlay
 from football.plays import StandardPlay
 from logger import logger
 
@@ -14,8 +14,8 @@ def get_plays(year):
     for week in range(1, 18):
         w = Week(year, week)
         for game_id in w.get_game_ids():
-            b = BoxScore(game_id)
-            drives = list(b.get_drives())
+            p = PlayByPlay(game_id)
+            drives = list(p.get_drives())
             for i, drive in enumerate(drives):
                 for play in drive.plays:
                     if isinstance(play, StandardPlay):
