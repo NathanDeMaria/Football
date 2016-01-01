@@ -1,5 +1,5 @@
 import argparse
-import pandas as pd
+from csv import DictWriter
 from pages import Week, PlayByPlay
 from football.plays import StandardPlay
 from logger import logger
@@ -42,8 +42,12 @@ def get_plays(year):
 
 def main(year):
     plays = get_plays(year)
-    df = pd.DataFrame(plays)
-    df.to_csv('../plays.csv')
+    with open('../plays.csv', 'w') as f:
+        first_play = next(plays)
+        writer = DictWriter(f, first_play.keys())
+        writer.writeheader()
+        for play in plays:
+            writer.writerow(play)
 
 
 if __name__ == '__main__':
