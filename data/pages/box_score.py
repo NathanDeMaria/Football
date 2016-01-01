@@ -19,5 +19,6 @@ class BoxScore:
         Scrape the list of drives from this box score page
         :return: yields all Drives from this game
         """
-        for drive_html in self._soup.find_all('li', class_='accordion-item'):
+        drive_items = self._soup.find_all('li', class_='accordion-item')
+        for drive_html in filter(lambda x: 'half-time' not in x.attrs.get('class'), drive_items):
             yield Drive(drive_html)
