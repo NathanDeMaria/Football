@@ -14,6 +14,33 @@ class PlayByPlay:
         url = self._url_format.format(game_id=game_id)
         self._soup = BeautifulSoup(get_page(url))
 
+        self._home = self._soup.find('div', 'team home').find('span', 'abbrev').text
+        self._away = self._soup.find('div', 'team away').find('span', 'abbrev').text
+
+        try:
+            self._home_score = int(self._soup.find('div', 'team home').find('div', 'score-container').text)
+            self._away_score = int(self._soup.find('div', 'team away').find('div', 'score-container').text)
+        except ValueError:
+            # The game hasn't happened yet
+            self._home_score = None
+            self._away_score = None
+
+    @property
+    def home(self):
+        return self._home
+
+    @property
+    def away(self):
+        return self._away
+
+    @property
+    def home_score(self):
+        return self._home_score
+
+    @property
+    def away_score(self):
+        return self._away_score
+
     def get_drives(self):
         """
         Scrape the list of drives from this box score page

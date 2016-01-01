@@ -15,6 +15,11 @@ def get_plays(year):
         w = Week(year, week)
         for game_id in w.get_game_ids():
             p = PlayByPlay(game_id)
+            final_lookup = {
+                p.home: p.home_score,
+                p.away: p.away_score
+            }
+
             drives = list(p.get_drives())
             for i, drive in enumerate(drives):
                 for play in drive.plays:
@@ -30,7 +35,8 @@ def get_plays(year):
                         yield dict(down=play.down, distance=play.distance, field_position=play.field_position,
                                    offense_score=offense_score, defense_score=defense_score,
                                    time_left=(4 - play.quarter) * 15 * 60 + play.seconds,
-                                   drive_number=i, game_id=game_id, offense=drive.offense, defense=drive.defense)
+                                   drive_number=i, game_id=game_id, offense=drive.offense, defense=drive.defense,
+                                   offense_final=final_lookup[drive.offense], defense_final=final_lookup[drive.defense])
         logger.info("Completed week {0}".format(week))
 
 
