@@ -1,6 +1,8 @@
 .ipynb_checkpoints/
 *.pyc
-data/.idea/
+*/.idea/
 
 *.csv
+
+science/explore/*.ipynb
 
