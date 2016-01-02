@@ -29,8 +29,8 @@ def get_plays(year):
                             offense_score = 0
                             defense_score = 0
                         else:
-                            offense_score = drives[previous_index].offense_score
-                            defense_score = drives[previous_index].defense_score
+                            offense_score = drives[previous_index].get_score(drive.offense)
+                            defense_score = drives[previous_index].get_score(drive.defense)
 
                         yield dict(down=play.down, distance=play.distance, field_position=play.field_position,
                                    offense_score=offense_score, defense_score=defense_score,

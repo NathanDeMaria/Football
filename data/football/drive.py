@@ -34,6 +34,18 @@ class Drive:
     def defense(self):
         return self._defense
 
+    def get_score(self, team):
+        """
+        Get the score on this drive for a team by name
+        :param team: team name, like DEN
+        :return: score of that team after this drive
+        """
+        if team == self._offense:
+            return self._offense_score
+        elif team == self._defense:
+            return self._defense_score
+        raise ValueError("Team {0} not found for this drive".format(team))
+
     def _parse_plays(self, html):
         """
         Parses the plays for this drive
