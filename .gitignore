@@ -3,6 +3,7 @@
 */.idea/
 
 *.csv
+*.pickle
 
 science/explore/*.ipynb
 
