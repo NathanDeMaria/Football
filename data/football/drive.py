@@ -1,6 +1,7 @@
 import re
+
+from football.logger import logger
 from .play_parser import parse_play
-from logger import logger
 
 
 class Drive:

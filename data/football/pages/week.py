@@ -1,5 +1,6 @@
 import re
-from scraper import get_page
+
+from football.scraper import get_page
 
 
 class Week:

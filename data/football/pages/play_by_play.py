@@ -1,6 +1,7 @@
 from bs4 import BeautifulSoup
-from scraper import get_page
+
 from football import Drive
+from football.scraper import get_page
 
 
 class PlayByPlay:

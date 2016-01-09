@@ -1,8 +1,9 @@
 import argparse
 from csv import DictWriter
-from pages import Week, PlayByPlay
+
+from football.logger import logger
+from football.pages import Week, PlayByPlay
 from football.plays import StandardPlay
-from logger import logger
 
 
 def get_plays(year):

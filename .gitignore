@@ -5,5 +5,7 @@
 *.csv
 *.pickle
 
+data/build/
+
 science/explore/*.ipynb
 
