@@ -1,3 +1,6 @@
+flask==0.10.1
 patsy==0.3.0
 numpy==1.9.2
 statsmodels==0.6.1
+football==0.1
+pandas==0.16.2

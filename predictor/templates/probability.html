@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Probability</title>
+    <link href="graph.css" rel="stylesheet" type="text/css">
+    <script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+    <script src="graph.js"></script>
+</head>
+<body>
+    <h1>Game ID: {{ game_id }}</h1>
+    <script>
+        (function(){
+            var gameId = '{{ game_id }}';
+            lineGraph(gameId);
+        })();
+    </script>
+</body>
+</html>
